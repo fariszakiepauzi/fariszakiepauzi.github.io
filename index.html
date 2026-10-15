@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of a Statistics graduate focused on data analytics, business intelligence, and research.">
+  <title>Muhammad Fariz Zaki | Data Analytics Portfolio</title>
+  <style>
+    :root {
+      --navy: #101e33;
+      --navy-2: #1b2d46;
+      --teal: #64d8b2;
+      --ink: #172338;
+      --muted: #627086;
+      --line: #e2e8f0;
+      --paper: #ffffff;
+      --soft: #f5f8fb;
+      --radius: 18px;
+      --shadow: 0 14px 40px rgba(16, 30, 51, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0; color: var(--ink); background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .container { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    .nav-wrap { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; letter-spacing: -.03em; }
+    .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; background: var(--navy); color: var(--teal); border-radius: 10px; font-size: 14px; }
+    .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+    .nav-links a { font-size: .9rem; text-decoration: none; color: var(--muted); font-weight: 650; }
+    .nav-links a:hover { color: var(--navy); }
+    .hero { background: var(--navy); color: white; padding: 88px 0 64px; overflow: hidden; position: relative; }
+    .hero:after { content: ""; position: absolute; width: 360px; height: 360px; border: 1px solid rgba(100,216,178,.22); border-radius: 50%; right: -100px; top: -120px; box-shadow: 0 0 0 45px rgba(100,216,178,.035), 0 0 0 90px rgba(100,216,178,.025); }
+    .hero-grid { display: grid; grid-template-columns: 1.4fr .8fr; align-items: center; gap: 48px; position: relative; z-index: 1; }
+    .eyebrow { color: var(--teal); text-transform: uppercase; letter-spacing: .13em; font-size: .76rem; font-weight: 800; }
+    h1 { font-size: clamp(2.7rem, 6vw, 4.8rem); line-height: 1.04; letter-spacing: -.06em; margin: 18px 0; max-width: 760px; }
+    .hero p { color: #d4dfec; max-width: 650px; font-size: 1.1rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 17px; border-radius: 10px; text-decoration: none; font-weight: 750; font-size: .92rem; transition: transform .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: var(--navy); background: var(--teal); }
+    .btn-outline { border: 1px solid #60718a; color: white; }
+    .hero-card { background: var(--navy-2); border: 1px solid #30435d; border-radius: var(--radius); padding: 24px; box-shadow: 0 24px 70px rgba(0,0,0,.15); }
+    .hero-card h2 { font-size: 1rem; margin: 0 0 18px; color: #fff; }
+    .skill-chip { display: inline-block; background: #263b55; color: #e7f0f7; padding: 7px 10px; margin: 4px 4px 0 0; border-radius: 8px; font-size: .8rem; }
+    .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 24px; }
+    .stat { border-top: 1px solid #40516a; padding-top: 14px; }
+    .stat strong { display: block; color: var(--teal); font-size: 1.1rem; }
+    .stat span { color: #c4d0e0; font-size: .76rem; }
+    section { padding: 76px 0; }
+    .section-head { max-width: 700px; margin-bottom: 32px; }
+    .section-label { color: #16866a; font-weight: 850; font-size: .76rem; text-transform: uppercase; letter-spacing: .12em; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; letter-spacing: -.045em; margin: 8px 0 14px; }
+    .section-head p, .muted { color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 42px; align-items: start; }
+    .principles { display: grid; gap: 12px; }
+    .principle { border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; gap: 14px; }
+    .principle-num { width: 34px; height: 34px; border-radius: 10px; background: #e6faf3; color: #16785f; display: grid; place-items: center; font-weight: 850; flex-shrink: 0; }
+    .principle strong { display: block; margin-bottom: 3px; }
+    .principle span { color: var(--muted); font-size: .9rem; }
+    .projects { background: var(--soft); }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project-card { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: 0 5px 18px rgba(16,30,51,.025); display: flex; flex-direction: column; min-height: 100%; }
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .project-no { color: #16866a; font-weight: 900; font-size: .78rem; letter-spacing: .1em; }
+    .project-type { background: #eef3f8; color: #44536a; border-radius: 999px; padding: 5px 9px; font-size: .72rem; font-weight: 750; }
+    .project-card h3 { margin: 0 0 10px; font-size: 1.2rem; line-height: 1.35; letter-spacing: -.025em; }
+    .project-card p { color: var(--muted); font-size: .92rem; margin: 0 0 14px; }
+    .project-card h4 { font-size: .82rem; margin: 10px 0 5px; }
+    .project-card ul { margin: 0 0 16px; padding-left: 19px; color: #435168; font-size: .88rem; }
+    .tags { margin-top: auto; padding-top: 14px; display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { font-size: .74rem; color: #176c57; background: #e9f9f3; border-radius: 7px; padding: 5px 8px; font-weight: 750; }
+    .project-links { border-top: 1px solid var(--line); margin-top: 17px; padding-top: 14px; display: flex; gap: 16px; font-size: .84rem; font-weight: 800; }
+    .project-links a { text-decoration: none; color: #176c57; }
+    .project-links a:hover { text-decoration: underline; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-box { border: 1px solid var(--line); border-radius: 15px; padding: 20px; }
+    .skill-box h3 { margin: 0 0 12px; font-size: 1rem; }
+    .skill-box p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .skill-box .skill-chip { background: #eef3f8; color: #34445b; margin: 3px 3px 0 0; }
+    .timeline { border-left: 2px solid #d8e6e1; padding-left: 24px; margin-left: 8px; display: grid; gap: 28px; }
+    .timeline-item { position: relative; }
+    .timeline-item:before { content: ""; position: absolute; left: -32px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--teal); border: 3px solid white; box-shadow: 0 0 0 1px #b8d9cf; }
+    .timeline-item h3 { margin: 0 0 4px; font-size: 1.08rem; }
+    .timeline-meta { color: #16866a; font-size: .84rem; font-weight: 800; }
+    .timeline-item p { color: var(--muted); margin: 8px 0 0; }
+    .contact { background: var(--navy); color: white; }
+    .contact .section-label { color: var(--teal); }
+    .contact .section-head p { color: #c4d0e0; }
+    .contact-panel { display: flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid #34465f; border-radius: var(--radius); padding: 26px; background: #172840; }
+    .contact-panel p { color: #c4d0e0; margin: 5px 0 0; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .contact-links a { color: white; text-decoration: none; border: 1px solid #53647b; border-radius: 9px; padding: 10px 12px; font-size: .86rem; font-weight: 750; }
+    footer { background: #0b1728; color: #9eacbf; padding: 22px 0; font-size: .82rem; }
+    footer .container { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 800px) {
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 62px; }
+      .hero-card { max-width: 540px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, 1100px); }
+      nav { align-items: flex-start; flex-direction: column; padding: 14px 0; gap: 12px; }
+      .nav-links { gap: 12px 16px; }
+      .nav-links a { font-size: .82rem; }
+      .project-grid { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
+      .stat-row { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home"><span class="brand-mark">FZ</span><span>Data Portfolio</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Statistics Graduate · Data Analytics · Business Intelligence</div>
+        <h1>Turning data into meaningful insights.</h1>
+        <p>I’m Muhammad Fariz Zaki, a Statistics graduate interested in data analytics and business intelligence. I work with data to uncover patterns, evaluate performance, and communicate findings that support better decisions.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore My Projects ↓</a>
+          <!-- Replace the URL below with your resume PDF path, for example ./assets/resume.pdf -->
+          <a class="btn btn-outline" href="#contact">Contact Me ↗</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>My analytical toolkit</h2>
+        <span class="skill-chip">R</span><span class="skill-chip">SPSS</span>
+        <span class="skill-chip">Excel</span><span class="skill-chip">Power BI</span>
+        <span class="skill-chip">SQL</span><span class="skill-chip">Python*</span>
+        <div class="stat-row">
+          <div class="stat"><strong>Analysis</strong><span>Explore & interpret</span></div>
+          <div class="stat"><strong>Modelling</strong><span>Test relationships</span></div>
+          <div class="stat"><strong>Reporting</strong><span>Communicate insights</span></div>
+        </div>
+        <p style="font-size:.75rem;color:#aebdd0;margin:18px 0 0;">*Keep only tools you can confidently discuss in an interview.</p>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">About me</div>
+          <h2>Analytical thinking, practical outcomes.</h2>
+          <p>I use statistical reasoning and data analysis to understand problems, find patterns, and explain what the results mean.</p>
+        </div>
+        <div class="about-grid">
+          <div>
+            <p>I hold a Bachelor of Science (Honours) in Statistics from Universiti Teknologi MARA (UiTM), Shah Alam, and a Diploma in Mathematical Sciences from UiTM Arau, where I achieved First Class standing.</p>
+            <p>My academic and practical projects have involved workforce survey analysis, plantation productivity, and long-term demographic trends. These experiences have developed my skills in preparing datasets, selecting appropriate analytical methods, interpreting results, and presenting findings clearly.</p>
+            <p>I am seeking opportunities in data analytics and business intelligence where I can contribute quantitative thinking, curiosity, and a structured approach to problem-solving while continuing to develop my technical skills.</p>
+          </div>
+          <div class="principles">
+            <div class="principle"><div class="principle-num">01</div><div><strong>Prepare reliable data</strong><span>Clean, validate, and organise data before analysis.</span></div></div>
+            <div class="principle"><div class="principle-num">02</div><div><strong>Choose suitable methods</strong><span>Match the analytical approach to the question and data.</span></div></div>
+            <div class="principle"><div class="principle-num">03</div><div><strong>Communicate the result</strong><span>Translate findings into clear visuals and practical interpretation.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Selected work</div>
+          <h2>Projects that show how I work with data.</h2>
+          <p>Each project demonstrates a different part of the analytical process—from preparing data and selecting methods to interpreting findings. Add links to your actual code, reports, and visuals before publishing.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-top"><span class="project-no">PROJECT 01</span><span class="project-type">Productivity Analytics</span></div>
+            <h3>Resource Utilisation and Productivity in Oil Palm Plantations (2018–2023)</h3>
+            <p>Assessed resource productivity and examined the relationship between selected estate-level resources and fresh fruit bunch (FFB) yield over time.</p>
+            <h4>My contribution</h4>
+            <ul>
+              <li>Cleaned and prepared longitudinal estate data.</li>
+              <li>Examined labour and fertiliser productivity indicators.</li>
+              <li>Applied panel regression to assess relationships with FFB yield.</li>
+              <li>Interpreted results in the context of plantation performance.</li>
+            </ul>
+            <h4>What it demonstrates</h4>
+            <p>Data preparation, productivity metrics, panel-data methods, and evidence-based interpretation.</p>
+            <div class="tags"><span class="tag">R</span><span class="tag">Panel Regression</span><span class="tag">Data Cleaning</span><span class="tag">Productivity</span></div>
+            <div class="project-links"><a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noreferrer">Code / Repository ↗</a><a href="#contact">Ask about project ↗</a></div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top"><span class="project-no">PROJECT 02</span><span class="project-type">Statistical Analysis</span></div>
+            <h3>Workforce Heterogeneity in Oil Palm Plantations</h3>
+            <p>Investigated workforce survey data to examine differences in job satisfaction and turnover intention across job roles and estate structures.</p>
+            <h4>My contribution</h4>
+            <ul>
+              <li>Screened survey data and reviewed analytical assumptions.</li>
+              <li>Conducted group comparisons using ANOVA and post-hoc analysis where appropriate.</li>
+              <li>Interpreted findings while considering statistical significance and study limitations.</li>
+            </ul>
+            <h4>What it demonstrates</h4>
+            <p>Survey data preparation, hypothesis testing, statistical interpretation, and research reporting.</p>
+            <div class="tags"><span class="tag">SPSS</span><span class="tag">ANOVA</span><span class="tag">Survey Analysis</span><span class="tag">Research</span></div>
+            <div class="project-links"><a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noreferrer">Materials / Repository ↗</a><a href="#contact">Ask about project ↗</a></div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top"><span class="project-no">PROJECT 03</span><span class="project-type">Trend Analysis</span></div>
+            <h3>Birth Rate Trends in Selected Asian Countries (1960–2023)</h3>
+            <p>Compared crude birth rate trends across selected Asian countries and examined their association with infant mortality rates.</p>
+            <h4>My contribution</h4>
+            <ul>
+              <li>Prepared annual demographic data for comparative analysis.</li>
+              <li>Used Joinpoint regression to examine changes in birth rate trends.</li>
+              <li>Used Spearman correlation to assess associations between crude birth rates and infant mortality rates.</li>
+            </ul>
+            <h4>What it demonstrates</h4>
+            <p>Long-term data analysis, trend interpretation, comparative research, and correlation analysis.</p>
+            <div class="tags"><span class="tag">Joinpoint Regression</span><span class="tag">Spearman Correlation</span><span class="tag">Demographics</span></div>
+            <div class="project-links"><a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noreferrer">Analysis / Repository ↗</a><a href="#contact">Ask about project ↗</a></div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top"><span class="project-no">PROJECT 04</span><span class="project-type">Database Design</span></div>
+            <h3>UniKlinik Inventory Management System</h3>
+            <p>Designed a database-oriented inventory management project to organise clinic inventory information and support structured data handling.</p>
+            <h4>My contribution</h4>
+            <ul>
+              <li>Designed an entity-relationship diagram.</li>
+              <li>Applied relational database and normalisation concepts.</li>
+              <li>Structured information to support inventory tracking and reporting.</li>
+            </ul>
+            <h4>What it demonstrates</h4>
+            <p>Database design, data organisation, and practical information management.</p>
+            <div class="tags"><span class="tag">SQL</span><span class="tag">Database Design</span><span class="tag">ERD</span></div>
+            <div class="project-links"><a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noreferrer">Code / Repository ↗</a><a href="#contact">Ask about project ↗</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Skills & tools</div>
+          <h2>From raw data to clear communication.</h2>
+          <p>Organised around the tasks commonly found in data analyst and BI roles. Adjust the list to match your current confidence and experience.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-box"><h3>Data preparation</h3><p><span class="skill-chip">Data cleaning</span><span class="skill-chip">Data validation</span><span class="skill-chip">Excel</span><span class="skill-chip">Data wrangling</span></p></div>
+          <div class="skill-box"><h3>Analysis & statistics</h3><p><span class="skill-chip">Descriptive statistics</span><span class="skill-chip">Hypothesis testing</span><span class="skill-chip">Correlation</span><span class="skill-chip">Regression</span><span class="skill-chip">Trend analysis</span></p></div>
+          <div class="skill-box"><h3>Tools & communication</h3><p><span class="skill-chip">R</span><span class="skill-chip">SPSS</span><span class="skill-chip">Power BI</span><span class="skill-chip">SQL</span><span class="skill-chip">Reporting</span><span class="skill-chip">Visualisation</span></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" style="background:var(--soft);">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Education & experience</div>
+          <h2>My foundation.</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-meta">30 March 2026 – 17 July 2026</div>
+            <h3>Industrial Training — Malaysian Palm Oil Board (MPOB)</h3>
+            <p>Gained practical exposure to research and data analysis through projects involving plantation productivity, resource utilisation, and workforce-related studies.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-meta">Bachelor's Degree</div>
+            <h3>Bachelor of Science (Honours) Statistics</h3>
+            <p>Universiti Teknologi MARA (UiTM), Shah Alam.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-meta">Diploma · First Class</div>
+            <h3>Diploma in Mathematical Sciences</h3>
+            <p>Universiti Teknologi MARA (UiTM), Arau.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-meta">Selected activities</div>
+            <h3>Data and analytics development</h3>
+            <p>ASEAN Data Science Explorers 2024 · ProSolve National 2025 · InnovAnalytics Bootcamp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-label">Get in touch</div>
+          <h2>Let's connect over data.</h2>
+          <p>I’m exploring graduate opportunities in data analytics and business intelligence. If you would like to discuss my projects or potential opportunities, feel free to connect.</p>
+        </div>
+        <div class="contact-panel">
+          <div><strong style="font-size:1.12rem;">Muhammad Fariz Zaki</strong><p>Data Analyst · Business Intelligence · Statistics</p></div>
+          <div class="contact-links">
+            <a href="mailto:YOUR-EMAIL@example.com">Email ↗</a>
+            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container"><span>© <span id="year">2026</span> Muhammad Fariz Zaki</span><span>Built for learning, analysis, and better decisions.</span></div></footer>
+</body>
+</html>
